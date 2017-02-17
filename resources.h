@@ -6,8 +6,8 @@
 //  Copyright © 2017 Daniel Bravo. All rights reserved.
 //
 
-#ifndef Header_h
-#define Header_h
+#ifndef resources_h
+#define resources_h
 
 #endif /* Header_h */
 
