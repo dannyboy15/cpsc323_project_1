@@ -36,7 +36,7 @@ int main() {
 
 
 	// ========  Start Test 1  ========
-	cout << "========  Start Test 1  ========" << endl;
+	cout << "========  Start Test 1 - " << Test_File << " ========" << endl;
 	
 
 	_Strings = txt_to_strings(Test_File);
