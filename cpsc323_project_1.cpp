@@ -77,10 +77,10 @@ vector<Token> tokenize(vector<string> lines) {
 	string currString;
 
 	if (!lines.empty()) {
-		for (int i = 0; i < lines.size(); i++) {            // Going through each line
+		for (size_t i = 0; i < lines.size(); i++) {            // Going through each line
 			currLine++;
 			currTokenIndex = 0;
-			for (int j = 0; j < lines[i].size(); j++) {     // Going through each character
+			for (size_t j = 0; j < lines[i].size(); j++) {     // Going through each character
 															// Check for comment
 				if (lines[i][j] == '/') {
 					if (lines[i][++j] == '/') {
