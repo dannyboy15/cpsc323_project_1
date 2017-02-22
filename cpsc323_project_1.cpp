@@ -35,94 +35,10 @@ int main() {
 	
 
 
-	// ========  Test 1 - Convert a txt file to a vector of strings  ========
-	cout << "========  Test 1 - Convert " << Test_File << " to a vector of strings  ========" << endl;
-
-	_Strings = txt_to_strings(Test_File);
-
-	for (int i = 0; i < _Strings.size(); i++) {
-		cout << _Strings.at(i) << endl;
-	}
-
-	_Strings.clear();
-	// ========  Test 1 End  ========
-
-
-
-	// ========  Test 2 - Manually build tokens and test them on the printer() function  ========
-	cout << "========  Test 2 - Manually build tokens and test them on the printer() function  ========" << endl;
-
-	Token a;
-	a.ln = 1;
-	a.id = "kwdprog";
-	a.ix = 0;
-	a.str = "prog";
-	_Tokens.push_back(a);
+	// ========  Start Test 1  ========
+	cout << "========  Start Test 1  ========" << endl;
 	
-	Token b;
-	b.ln = 2;
-	b.id = "brace1";
-	b.ix = 0;
-	b.str = "{";
-	_Tokens.push_back(b);
 
-	Token c;
-	c.ln = 3;
-	c.id = "kwdprint";
-	c.ix = 1;
-	c.str = "print";
-	_Tokens.push_back(c);
-
-	Token d;
-	d.ln = 3;
-	d.id = "parens1";
-	d.ix = 2;
-	d.str = "(";
-	_Tokens.push_back(d);
-
-	Token e;
-	e.ln = 3;
-	e.id = "ident";
-	e.ix = 3;
-	e.str = "ASCII:";
-	_Tokens.push_back(e);
-	
-	Token f;
-	f.ln = 3;
-	f.id = "comma";
-	f.ix = 4;
-	f.str = ",";
-	_Tokens.push_back(f);
-
-	printer(Global_Language,_Tokens);
-	// ========  Test 2 End  ========
-
-
-
-	// ========  Test 3 - Retest printer() to see if tokens were cleared  ========
-	cout << "========  Test 3 - Retest printer() to see if tokens were cleared  ========" << endl;
-
-	Token g;
-	g.ln = 1;
-	g.id = "kwdprog";
-	g.ix = 0;
-	g.str = "prog";
-	_Tokens.push_back(g);
-
-	Token h;
-	h.ln = 2;
-	h.id = "brace1";
-	h.ix = 0;
-	h.str = "{";
-	_Tokens.push_back(h);
-
-	printer(Global_Language, _Tokens);
-	// ========  Test 3 End  ========
-
-
-
-	// ========  Test 4 - Tokenize Test  ========
-	cout << "========  Test 4 - Tokenize Test  ========" << endl;
 	_Strings = txt_to_strings(Test_File);
 	
 	_Tokens = tokenize(_Strings);
@@ -130,8 +46,13 @@ int main() {
 	printer(Global_Language,_Tokens);
 
 	_Strings.clear();
-	// ========  Test 4 End  ========
 	
+
+	cout << "========  End Test 1  ========" << endl;
+	// ========  End Test 1  ========
+	
+
+
 	return 0;
 }
 
