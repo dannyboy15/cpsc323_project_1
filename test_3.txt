@@ -1,0 +1,8 @@
+prog { // Hypotenuse.
+	print( "Both legs?> ");
+	a = input;
+	b = input;
+	print( "Hypotenuse = ",
+		( a * a + b ) ^ 0.5
+		);
+}

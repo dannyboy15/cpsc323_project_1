@@ -1,0 +1,7 @@
+prog { // circle circumf.
+	pi  3.14;
+	print( "Input radius> ");
+	rx = input;
+	circum = 2 * pi * rx;
+	print( "Circumf= ", circum);
+}
