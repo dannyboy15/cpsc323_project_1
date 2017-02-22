@@ -59,7 +59,7 @@ void printer(string Global_Language, vector<Token> &tokens) { // Prints out all 
 
 	cout << "(:lang " << Global_Language << endl;	//	Print the language
 
-	for (int i = 0; i < tokens.size(); i++) {	// For each token in our tokens vector
+	for (size_t i = 0; i < tokens.size(); i++) {	// For each token in our tokens vector
 
 		for (int i = 0; i < 3; i++) { // Indent the new line
 			cout << " ";
