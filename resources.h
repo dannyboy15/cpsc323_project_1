@@ -3,6 +3,7 @@
 //	David Feinzimer		dfeinzimer@csu.fullerton.edu
 //	Mircea Dumitrache	dmircea@csu.fullerton.edu
 //	Description:		Contains the declaration of token, conversion functions and our printing function.
+
 #pragma once
 
 #ifndef resources_h
@@ -12,14 +13,16 @@
 
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <regex>
 #include <stdio.h>
 #include <string>
 #include <vector>
-#include <map>
+
 
 using namespace std;
 
+//	========  Function Prototypes  ========
 struct Token;	//	prototype
 void printer();	//	prototype
 string txt_to_strings();	//	prototype
