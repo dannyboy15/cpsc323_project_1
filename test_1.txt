@@ -1,0 +1,7 @@
+prog // Print some ASCII codes.
+{
+	print( "ASCII:",
+		" A= ", 65,
+		" Z= ", 90
+		);
+}
