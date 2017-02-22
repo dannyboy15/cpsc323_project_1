@@ -22,8 +22,10 @@
 
 using namespace std;
 
+//	========  Global Variables  ========
 const int KEY_WORD_SIZE = 13;
 string keyWord[KEY_WORD_SIZE] = { "prog","main","fcn","class","float","int","string","if","elseif","else","while","input","print" };
+
 //	========  Function Prototypes  ========
 struct Token;	//	prototype
 void printer();	//	prototype
