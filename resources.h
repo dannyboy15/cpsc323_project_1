@@ -23,6 +23,7 @@
 using namespace std;
 
 const int KEY_WORD_SIZE = 13;
+string keyWord[KEY_WORD_SIZE] = { "prog","main","fcn","class","float","int","string","if","elseif","else","while","input","print" };
 //	========  Function Prototypes  ========
 struct Token;	//	prototype
 void printer();	//	prototype
@@ -35,7 +36,7 @@ Token next_token();
 
 struct Token {
 	int ln;		// line number
-    string id;		// id based on grammar
+	string id;		// id based on grammar
 	int ix = 0;	// optional; index number
 	string str;		// optional; actual string
 };
@@ -53,29 +54,29 @@ vector<string> txt_to_strings(string txt_file) {	//	Convert an input txt file to
 }
 
 void printer(string Global_Language, vector<Token> &tokens) { // Prints out all tokens
-	
+
 	cout << "(:lang " << Global_Language << endl;	//	Print the language
 
 	for (int i = 0; i < tokens.size(); i++) {	// For each token in our tokens vector
-		
+
 		for (int i = 0; i < 3; i++) { // Indent the new line
 			cout << " ";
 		}
-		
+
 		cout << "(:token " << tokens[i].ln << " " << tokens[i].id;	//	Print line number
-		
+
 		if (tokens[i].id == "ident") {	//	If the token has an index, print it
 			cout << " :ix " << tokens[i].ix;
 		}
 
-		if (tokens[i].id == "ident" | 
-			tokens[i].id == "string" | 
-			tokens[i].id == "int" | 
-			tokens[i].id == "float" | 
-			tokens[i].id == "flpoat") {	
-				cout << " :str \"" << tokens[i].str << "\"";	//	If the token has a str, print it
+		if (tokens[i].id == "ident" |
+			tokens[i].id == "string" |
+			tokens[i].id == "int" |
+			tokens[i].id == "float" |
+			tokens[i].id == "flpoat") {
+			cout << " :str \"" << tokens[i].str << "\"";	//	If the token has a str, print it
 		}
-		
+
 		cout << ")" << endl;	//	Finish printing that token
 	}
 
@@ -146,5 +147,5 @@ map<string, regex> gmr = {
 	// // Miscellaeous
 	// 99 error // Unknown token.
 	//  0 eof // End-of-Input.\
-	    
+		    
 };

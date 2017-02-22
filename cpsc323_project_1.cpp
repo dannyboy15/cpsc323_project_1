@@ -32,25 +32,25 @@ static const string NOTKWD("NOTKWD");
 static const string NOTFLOAT("NOTFLOAT");
 
 int main() {
-	
+
 
 
 	// ========  Start Test 1  ========
 	cout << "========  Start Test 1 - " << Test_File << " ========" << endl;
-	
+
 
 	_Strings = txt_to_strings(Test_File);
-	
+
 	_Tokens = tokenize(_Strings);
-	
-	printer(Global_Language,_Tokens);
+
+	printer(Global_Language, _Tokens);
 
 	_Strings.clear();
-	
+
 
 	cout << "========  End Test 1  ========" << endl;
 	// ========  End Test 1  ========
-	
+
 
 
 	return 0;
@@ -272,9 +272,18 @@ bool isNumber(char c, bool firstChar) {
 string whichKwd(string s) {
 	// TODO: Check whether string is a keyword
 	//       otherwise return NOTKWD
-	if (s == "prog") {
-		return "kwdprog";
+	string key = "kwd";
+	for (int i = 0; i < KEY_WORD_SIZE; ++i)
+	{
+		if (s == keyWord[i])
+		{
+			key += keyWord[i];
+			return key;
+		}
 	}
+	/*if (s == "prog") {
+	return "kwdprog";
+	}*/
 	return NOTKWD;
 }
 
