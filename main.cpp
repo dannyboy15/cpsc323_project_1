@@ -13,7 +13,7 @@ using namespace std;
 
 //	========  Global Variables  ========
 string Global_Language = "A3";
-string Test_File = "test_3.txt";
+string Test_File = "test_6.txt";
 vector<Token> _Tokens;
 vector<string> _Strings;
 
