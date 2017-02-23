@@ -37,9 +37,9 @@ Token peek_token();
 Token next_token();
 
 struct Token {
-	int ln;		// line number
+	int ln;			// line number
 	string id;		// id based on grammar
-	int ix = 0;	// optional; index number
+	int ix;			// optional; index number
 	string str;		// optional; actual string
 };
 
@@ -85,69 +85,3 @@ void printer(string Global_Language, vector<Token> &tokens) { // Prints out all 
 	cout << ")" << endl;	//	Finish the print function
 	tokens.clear();
 }
-// 
-// map<string, regex> gmr = {
-// 	{ "comment", regex("//.*") }, // Treat as whitespace up to newline char; like C/C++/Java.
-								  //   2 ident = LU LUD *  // identifier.
-								  //     LU = '_' | [a..zA..Z]  // Letter-Underscore.
-								  //     LUD = LU | DIGIT  // Letter-Underscore-Digit.
-								  //     DIGIT = [0..9]
-								  //   3 int = ( NDIG | PDIG ) DIGIT * // integer; might start with a negative-digit.
-								  //     NDIG = '-' | DIGIT  // Negative-Digit.
-								  //     PDIG = DIGIT  // Positive-Digit.
-								  //   4 float = int '.' DIGIT + // float, with decimal point and 1+ fractional digits.
-								  //   5 string = '"' .* '"' // Cannot contain a double-quote char; no escape chars.
-								  // Unpaired delimiters
-	// { "comma", regex(",") },  // 6 comma = ','
-	// { "6", regex(",") },
-	// { "semi", regex(";") },  //  7 semi = ';'
-	// { "7", regex(";") },
-	// // Keywords
-	// { "kwd", regex(";") },  //  7 semi = ';'
-	// { "7", regex(";") },
-	// 10 kwdprog = "prog"
-	// 11 kwdmain = "main"
-	// 12 kwdfcn = "fcn"
-	// 13 kwdclass = "class"
-	// 15 kwdfloat = "float"
-	// 16 kwdint = "int"
-	// 17 kwdstring = "string"
-	// 18 kwdif = "if"
-	// 19 kwdelseif = "elseif"
-	// 20 kwdelse = "else"
-	// 21 kwdwhile = "while"
-	// 22 kwdinput = "input"
-	// 23 kwdprint = "print"
-	// 24 kwdnew = "new"
-	// 25 kwdreturn = "return"
-	// // Paired delimeters
-	// 31 angle1 = '<'
-	// 32 angle2 = '>'
-	// 33 brace1 = '{'
-	// 34 brace2 = '}'
-	// 35 bracket1 = '['
-	// 36 bracket2 = ']'
-	// 37 parens1 = '('
-	// 38 parens2 = ')'
-	// // Other punctuation
-	// 41 aster = '*'
-	// 42 caret = '^'
-	// 43 colon = ':'
-	// 44 dot = '.'
-	// 45 equal = '='
-	// 46 minus = '-'
-	// 47 plus = '+'
-	// 48 slash = '/'
-	// // Multi-char operators
-	// 51 oparrow = "->"
-	// 52 opeq = "=="
-	// 53 opne = "!="
-	// 54 ople = "<="
-	// 55 opge = ">="
-	// 56 opshl = "<<"
-	// 57 opshr = ">>"
-	// // Miscellaeous
-	// 99 error // Unknown token.
-	//  0 eof // End-of-Input.\
-		    
-// };
