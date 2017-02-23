@@ -25,9 +25,9 @@ bool isLetter(char c, bool firstChar);
 bool isNumber(char c, bool firstChar);
 string whichKwd(string s);
 string whichNumType(string s);
-Token tonkenate(int ln, string id, int ix, string str);
-Token tonkenate(int ln, string id, string str);
-Token tonkenate(int ln, string id);
+Token tokenate(int ln, string id, int ix, string str);
+Token tokenate(int ln, string id, string str);
+Token tokenate(int ln, string id);
 static const string NOTKWD("NOTKWD");
 static const string NOTFLOAT("NOTFLOAT");
 
@@ -89,7 +89,7 @@ vector<Token> tokenize(vector<string> lines) {
 					// 48 slash = '/'
 					else {
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "slash"));
+						TokenList.push_back(tokenate(currLine, "slash"));
 					}
 				}
 				else if (lines[i][_char] == '"') {	// The beginning of a string has been found
@@ -101,7 +101,7 @@ vector<Token> tokenize(vector<string> lines) {
 					}
 					currTokenIndex++;
 					// create token for string
-					TokenList.push_back(tonkenate(currLine, "string", s));
+					TokenList.push_back(tokenate(currLine, "string", s));
 				}
 				// If the first character is a letter extract
 				// the whole word (from current character until
@@ -117,12 +117,12 @@ vector<Token> tokenize(vector<string> lines) {
 					if (whichKwd(s) == NOTKWD) {         // If not a kwd then it's ident
 						currTokenIndex++;
 						// create token for ident
-						TokenList.push_back(tonkenate(currLine, "ident", currTokenIndex, s));
+						TokenList.push_back(tokenate(currLine, "ident", currTokenIndex, s));
 					}
 					else {
 						currTokenIndex++;
 						// create token for kwd
-						TokenList.push_back(tonkenate(currLine, whichKwd(s)));
+						TokenList.push_back(tokenate(currLine, whichKwd(s)));
 					}
 				}
 				else if (isNumber(lines[i][_char], true)) {
@@ -138,12 +138,12 @@ vector<Token> tokenize(vector<string> lines) {
 					if (whichNumType(intStr) == "int") {         // If not a float it's int
 						currTokenIndex++;
 						// create token for int
-						TokenList.push_back(tonkenate(currLine, "int", intStr));
+						TokenList.push_back(tokenate(currLine, "int", intStr));
 					}
 					else if (whichNumType(intStr) == "float") {
 						currTokenIndex++;
 						// create token for float
-						TokenList.push_back(tonkenate(currLine, "float", intStr));
+						TokenList.push_back(tokenate(currLine, "float", intStr));
 					}
 				}
 				else {
@@ -152,28 +152,28 @@ vector<Token> tokenize(vector<string> lines) {
 						// 6 comma = ','
 					case ',':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "comma"));
+						TokenList.push_back(tokenate(currLine, "comma"));
 						break;
 						// 7 semi = ';'
 					case ';':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "semi"));
+						TokenList.push_back(tokenate(currLine, "semi"));
 						break;
 						// 31 angle1 = '<'
 					case '<':
 						if (lines[i][_char + 1] == '=') {
 							// 54 ople = "<="
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "ople"));
+							TokenList.push_back(tokenate(currLine, "ople"));
 						}
 						// 56 opshl = "<<"
 						else if (lines[i][_char + 1] == '<') {
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "opshl"));
+							TokenList.push_back(tokenate(currLine, "opshl"));
 						}
 						else {
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "angle1"));
+							TokenList.push_back(tokenate(currLine, "angle1"));
 						}
 						break;
 						// 32 angle2 = '>'
@@ -181,79 +181,79 @@ vector<Token> tokenize(vector<string> lines) {
 						if (lines[i][_char + 1] == '=') {
 							// 55 opge = ">="
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "opge"));
+							TokenList.push_back(tokenate(currLine, "opge"));
 						}
 						else if (lines[i][_char + 1] == '>') {
 							// 57 opshr = ">>"
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "opshr"));
+							TokenList.push_back(tokenate(currLine, "opshr"));
 						}
 						else {
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "angle2"));
+							TokenList.push_back(tokenate(currLine, "angle2"));
 						}
 						break;
 						// 33 brace1 = '{'
 					case '{':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "brace1"));
+						TokenList.push_back(tokenate(currLine, "brace1"));
 						break;
 						// 34 brace2 = '}'
 					case '}':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "brace2"));
+						TokenList.push_back(tokenate(currLine, "brace2"));
 						break;
 						// 35 bracket1 = '['
 					case '[':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "bracket1"));
+						TokenList.push_back(tokenate(currLine, "bracket1"));
 						break;
 						// 36 bracket2 = ']'
 					case ']':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "bracket2"));
+						TokenList.push_back(tokenate(currLine, "bracket2"));
 						break;
 						// 37 parens1 = '('
 					case '(':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "parens1"));
+						TokenList.push_back(tokenate(currLine, "parens1"));
 						break;
 						// 38 parens2 = ')'
 					case ')':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "parens2"));
+						TokenList.push_back(tokenate(currLine, "parens2"));
 						break;
 						// Other punctuation
 						// 41 aster = '*'
 					case '*':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "aster"));
+						TokenList.push_back(tokenate(currLine, "aster"));
 						break;
 						// 42 caret = '^'
 					case '^':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "caret"));
+						TokenList.push_back(tokenate(currLine, "caret"));
 						break;
 						// 43 colon = ':'
 					case ':':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "colon"));
+						TokenList.push_back(tokenate(currLine, "colon"));
 						break;
 						// 44 dot = '.'
 					case '.':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "angle1"));
+						TokenList.push_back(tokenate(currLine, "angle1"));
 						break;
 						// 45 equal = '='
 					case '=':
 						if (lines[i][_char + 1] == '=') {
 							// 52 opeq = "=="
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "opeq"));
+							TokenList.push_back(tokenate(currLine, "opeq"));
 						}
 						else {
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "equal"));
+							TokenList.push_back(tokenate(currLine, "equal"));
 						}
 						break;
 					// 46 minus = '-'
@@ -262,23 +262,23 @@ vector<Token> tokenize(vector<string> lines) {
 						if (lines[i][_char + 1] == '>') {
 							// 51 oparrow = "->"
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "oparrow"));
+							TokenList.push_back(tokenate(currLine, "oparrow"));
 						}
 						else {
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "minus"));
+							TokenList.push_back(tokenate(currLine, "minus"));
 						}
 						break;
 						// 47 plus = '+'
 					case '+':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "plus"));
+						TokenList.push_back(tokenate(currLine, "plus"));
 						break;
 						// 53 opne = "!="
 					case '!':
 						if (lines[i][_char + 1] == '=') {
 							currTokenIndex++;
-							TokenList.push_back(tonkenate(currLine, "opne"));
+							TokenList.push_back(tokenate(currLine, "opne"));
 						}
 						break;
 					default:
@@ -338,7 +338,7 @@ string whichNumType(string s) {
 	return "wrong";
 }
 
-Token tonkenate(int ln, string id, int ix, string str) {
+Token tokenate(int ln, string id, int ix, string str) {
 
 	Token tkn = *new Token();
 	tkn.ln = ln;
@@ -349,7 +349,7 @@ Token tonkenate(int ln, string id, int ix, string str) {
 	return tkn;
 }
 
-Token tonkenate(int ln, string id, string str) {
+Token tokenate(int ln, string id, string str) {
 
 	Token tkn = *new Token();
 	tkn.ln = ln;
@@ -359,7 +359,7 @@ Token tonkenate(int ln, string id, string str) {
 	return tkn;
 }
 
-Token tonkenate(int ln, string id) {
+Token tokenate(int ln, string id) {
 
 	Token tkn = *new Token();
 	tkn.ln = ln;
