@@ -63,11 +63,6 @@ void testToken(string cntrl, string test) {
 		cout << "You failed";
 }
 
-void reedLineForTokens(string s) {
-	// TODO: function that reads input
-	//       from text file or standard input
-}
-
 vector<Token> tokenize(vector<string> lines) {
 	vector<Token> TokenList = *new vector<Token>();
 
