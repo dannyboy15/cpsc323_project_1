@@ -74,8 +74,7 @@ void printer(string Global_Language, vector<Token> &tokens) { // Prints out all 
 		if (tokens[i].id == "ident" |
 			tokens[i].id == "string" |
 			tokens[i].id == "int" |
-			tokens[i].id == "float" |
-			tokens[i].id == "flpoat") {
+			tokens[i].id == "float") {
 			cout << " :str \"" << tokens[i].str << "\"";	//	If the token has a str, print it
 		}
 
