@@ -7,7 +7,7 @@ David Feinzimer		891774168	dfeinzimer@csu.fullerton.edu
 Mircea Dumitrache	890713464	dmircea@csu.fullerton.edu  
 
 Files needed:  
-cpsc323_project_1.cpp  
+main.cpp  
 resources.h  
 test_1.txt  
 test_2.txt  
