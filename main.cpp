@@ -80,16 +80,16 @@ vector<Token> tokenize(vector<string> lines) {
 	if (!lines.empty()) {				// Make sure lines is not empty
 		for (size_t i = 0; i < lines.size(); i++) {            // Going through each line
 			
-			currLine++;
-			currTokenIndex = 0;
+			currLine++;		// Increment line number
+			currTokenIndex = 0;	// Reset token index
 			
-			for (size_t _char = 0; _char < lines[i].length(); _char++) {     // Going through each character
+			for (size_t _char = 0; _char < lines[i].length(); _char++) {     // Going through each character in a line
 				
 				if (lines[i][_char] == '/') {
 
 					// Check for comments
 					if (lines[i][_char + 1] == '/') {
-						break;
+						break;	// A comment has been found, stop processing this line and move on to the next
 					}
 					// 48 slash = '/'
 					else {
@@ -97,10 +97,10 @@ vector<Token> tokenize(vector<string> lines) {
 						TokenList.push_back(tonkenate(currLine, "slash"));
 					}
 				}
-				else if (lines[i][_char] == '"') {
+				else if (lines[i][_char] == '"') {	// The beginning of a string has been found
 					string s;
 					++_char;
-					while (lines[i][_char] != '"') {
+					while (lines[i][_char] != '"') {	//	Until the quote is closed keep apending chars to the string
 						s.append(string(1, lines[i][_char]));
 						++_char;
 					}
