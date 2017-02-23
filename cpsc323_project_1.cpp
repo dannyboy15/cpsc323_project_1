@@ -86,8 +86,11 @@ vector<Token> tokenize(vector<string> lines) {
 					if (lines[i][++j] == '/') {
 						break;
 					}
-					else
-						continue;
+					else {
+						// 48 slash = '/'
+						currTokenIndex++;
+						TokenList.push_back(tonkenate(currLine, "slash"));
+					}
 				}
 				else if (lines[i][j] == '"') {
 					string s;
@@ -110,7 +113,6 @@ vector<Token> tokenize(vector<string> lines) {
 						s.append(string(1, lines[i][j]));
 						j++;
 					}
-
 					if (whichKwd(s) == NOTKWD) {         // If not a kwd then it's ident
 						currTokenIndex++;
 						// create token for ident
@@ -221,6 +223,7 @@ vector<Token> tokenize(vector<string> lines) {
 							TokenList.push_back(tonkenate(currLine, "opeq"));
 						else
 							TokenList.push_back(tonkenate(currLine, "equal"));
+						break;
 						// 46 minus = '-'
 					case '-':
 						if (lines[i][j + 1] == '>')
@@ -232,10 +235,6 @@ vector<Token> tokenize(vector<string> lines) {
 						// 47 plus = '+'
 					case '+':
 						TokenList.push_back(tonkenate(currLine, "plus"));
-						break;
-						// 48 slash = '/'
-					case '/':
-						TokenList.push_back(tonkenate(currLine, "slash"));
 						break;
 						// 53 opne = "!="
 					case '!':
