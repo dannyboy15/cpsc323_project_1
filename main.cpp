@@ -13,7 +13,7 @@ using namespace std;
 
 //	========  Global Variables  ========
 string Global_Language = "A3";
-string Test_File = "test_5.txt";
+string Test_File = "test_1.txt";
 vector<Token> _Tokens;
 vector<string> _Strings;
 
@@ -212,12 +212,12 @@ vector<Token> tokenize(vector<string> lines) {
 						// 37 parens1 = '('
 					case '(':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "perns1"));
+						TokenList.push_back(tonkenate(currLine, "parens1"));
 						break;
 						// 38 parens2 = ')'
 					case ')':
 						currTokenIndex++;
-						TokenList.push_back(tonkenate(currLine, "pernes2"));
+						TokenList.push_back(tonkenate(currLine, "parens2"));
 						break;
 						// Other punctuation
 						// 41 aster = '*'
