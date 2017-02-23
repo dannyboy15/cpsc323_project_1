@@ -12,7 +12,7 @@
 using namespace std;
 
 //	========  Global Variables  ========
-string Global_Language = "A3";
+string _Language = "A3";
 string Test_File = "test_6.txt";
 vector<Token> _Tokens;
 vector<string> _Strings;
@@ -43,7 +43,7 @@ int main() {
 
 	_Tokens = tokenize(_Strings);
 
-	printer(Global_Language, _Tokens);
+	printer(_Language, _Tokens);
 
 	_Strings.clear();
 
