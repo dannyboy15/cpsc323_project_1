@@ -13,7 +13,7 @@ using namespace std;
 
 //	========  Global Variables  ========
 string _Language = "A3";
-string Test_File = "test_1.txt";
+string Test_File = "test_X.txt";
 vector<Token> _Tokens;
 vector<string> _Strings;
 
@@ -33,25 +33,42 @@ static const string NOTFLOAT("NOTFLOAT");
 
 int main() {
 
+	//declare int and make user input the test number
+	//NOTE: files must be named after the following prototype: 'test_X.txt' where X is a number
+	int x = 0;
+	while (true)
+	{
+		
+		cout << "Please input a test number or a negative number to exit: ";
+		cin >> x;
+		//if negative x then exit loop
+		if (x < 0)
+			break;
+		//concatinates string to match reuired name
+		Test_File = "test_" + to_string(x) + ".txt";
+
+		//checks if a file is available
+		ifstream f(Test_File.c_str());//if true run lexer
+		if (f.good())
+		{
+			// ========  Start Test 1  ========
+			cout << "========  Start Test 1 - " << Test_File << " ========" << endl;
 
 
-	// ========  Start Test 1  ========
-	cout << "========  Start Test 1 - " << Test_File << " ========" << endl;
+			_Strings = txt_to_strings(Test_File);
+
+			_Tokens = tokenize(_Strings);
+
+			printer(_Language, _Tokens);
+
+			_Strings.clear();
 
 
-	_Strings = txt_to_strings(Test_File);
-
-	_Tokens = tokenize(_Strings);
-
-	printer(_Language, _Tokens);
-
-	_Strings.clear();
-
-
-	cout << "========  End Test 1  ========" << endl;
-	// ========  End Test 1  ========
-
-
+			cout << "========  End Test 1  ========" << endl;
+			// ========  End Test 1  ========
+		}//else output error
+		else cout << "No such file found in current directory!" << endl;
+	}
 
 	return 0;
 }
