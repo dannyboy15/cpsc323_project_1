@@ -2,6 +2,7 @@
   (:token 1 kwdprog)
   (:token 2 brace1)
   (:token 3 kwdprint)
+  (:token 3 parens1)
   (:token 3 string :str "ASCII:")
   (:token 3 comma)
   (:token 4 string :str " A= ")
@@ -14,5 +15,4 @@
   (:token 6 parens2)
   (:token 6 semi)
   (:token 7 brace2)
-  (:token 3 parens1)
 )
