@@ -4,7 +4,7 @@ Team ID: DDM
 
 Daniel Bravo		893863209	bravod@csu.fullerton.edu  
 David Feinzimer		891774168	dfeinzimer@csu.fullerton.edu   
-Mircea Dumitrache				dmircea@csu.fullerton.edu  
+Mircea Dumitrache	890713464	dmircea@csu.fullerton.edu  
 
 Files needed:  
 cpsc323_project_1.cpp  
