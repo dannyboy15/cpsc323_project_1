@@ -20,7 +20,7 @@ Installation/Run Info:
 In main.cpp declare a test file (.txt format) on line 16.  
 
 Bugs Remaining:    
- 
+N/A
 
 Features Added:  
 N/A  
