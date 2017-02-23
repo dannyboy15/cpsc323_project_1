@@ -147,99 +147,134 @@ vector<Token> tokenize(vector<string> lines) {
 						// Paired delimeters
 						// 6 comma = ','
 					case ',':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "comma"));
 						break;
 						// 7 semi = ';'
 					case ';':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "semi"));
 						break;
 						// 31 angle1 = '<'
 					case '<':
-						if (lines[i][j + 1] == '=')
+						if (lines[i][j + 1] == '=') {
 							// 54 ople = "<="
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "ople"));
+						}
 						// 56 opshl = "<<"
-						else if (lines[i][j + 1] == '<')
+						else if (lines[i][j + 1] == '<') {
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "opshl"));
-						else
+						}
+						else {
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "angle1"));
+						}
 						break;
 						// 32 angle2 = '>'
 					case '>':
-						if (lines[i][j + 1] == '=')
+						if (lines[i][j + 1] == '=') {
 							// 55 opge = ">="
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "opge"));
-						else if (lines[i][j + 1] == '>')
+						}
+						else if (lines[i][j + 1] == '>') {
 							// 57 opshr = ">>"
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "opshr"));
-						else
+						}
+						else {
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "angle2"));
+						}
 						break;
 						// 33 brace1 = '{'
 					case '{':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "brace1"));
 						break;
 						// 34 brace2 = '}'
 					case '}':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "brace2"));
 						break;
 						// 35 bracket1 = '['
 					case '[':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "bracket1"));
 						break;
 						// 36 bracket2 = ']'
 					case ']':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "bracket2"));
 						break;
 						// 37 parens1 = '('
 					case '(':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "perns1"));
 						break;
 						// 38 parens2 = ')'
 					case ')':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "pernes2"));
 						break;
 						// Other punctuation
 						// 41 aster = '*'
 					case '*':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "aster"));
 						break;
 						// 42 caret = '^'
 					case '^':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "caret"));
 						break;
 						// 43 colon = ':'
 					case ':':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "colon"));
 						break;
 						// 44 dot = '.'
 					case '.':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "angle1"));
 						break;
 						// 45 equal = '='
 					case '=':
-						if (lines[i][j + 1] == '=')
+						if (lines[i][j + 1] == '=') {
 							// 52 opeq = "=="
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "opeq"));
-						else
+						}
+						else {
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "equal"));
+						}
 						break;
 						// 46 minus = '-'
 					case '-':
-						if (lines[i][j + 1] == '>')
+						if (lines[i][j + 1] == '>') {
 							// 51 oparrow = "->"
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "oparrow"));
-						else
+						}
+						else {
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "minus"));
+						}
 						break;
 						// 47 plus = '+'
 					case '+':
+						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "plus"));
 						break;
 						// 53 opne = "!="
 					case '!':
-						if (lines[i][j + 1] == '=')
+						if (lines[i][j + 1] == '=') {
+							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "opne"));
+						}
 						break;
 					default:
 						break;
