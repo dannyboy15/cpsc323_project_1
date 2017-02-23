@@ -66,7 +66,7 @@ void testToken(string cntrl, string test) {
 vector<Token> tokenize(vector<string> lines) {
 	vector<Token> TokenList = *new vector<Token>();
 
-	// Vriables for token cration
+	// Vriables for token creation
 	int currLine = 0;
 	int currTokenIndex = 0;
 	string currID;
