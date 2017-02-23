@@ -17,7 +17,7 @@ test_5.txt
 test_6.txt  
 
 Installation/Run Info:  
-In main.cpp declare a test file (.txt format) on line 16.  
+Input a test number between 1 and 6. 
 
 Bugs Remaining:    
 N/A
