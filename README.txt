@@ -17,7 +17,7 @@ test_5.txt
 test_6.txt  
 
 Installation/Run Info:  
-Input a test number between 1 and 6. 
+Place test files in the program's directory in the format 'test_x.txt' where x is an integer value. 
 
 Bugs Remaining:    
 N/A

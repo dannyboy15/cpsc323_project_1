@@ -39,7 +39,7 @@ int main() {
 	while (true)
 	{
 		
-		cout << "Please input a test number (1-6) or a negative number to exit: ";
+		cout << "Please input a test number or a negative number to exit: ";
 		cin >> x;
 		//if negative x then exit loop
 		if (x < 0)
