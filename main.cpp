@@ -71,48 +71,54 @@ void reedLineForTokens(string s) {
 vector<Token> tokenize(vector<string> lines) {
 	vector<Token> TokenList = *new vector<Token>();
 
+	// Vriables for token cration
 	int currLine = 0;
 	int currTokenIndex = 0;
 	string currID;
 	string currString;
 
-	if (!lines.empty()) {
+	if (!lines.empty()) {				// Make sure lines is not empty
 		for (size_t i = 0; i < lines.size(); i++) {            // Going through each line
+			
 			currLine++;
 			currTokenIndex = 0;
-			for (size_t j = 0; j < lines[i].size(); j++) {     // Going through each character
-															// Check for comment
-				if (lines[i][j] == '/') {
-					if (lines[i][++j] == '/') {
+			
+			for (size_t _char = 0; _char < lines[i].length(); _char++) {     // Going through each character
+				
+				if (lines[i][_char] == '/') {
+
+					// Check for comments
+					if (lines[i][_char + 1] == '/') {
 						break;
 					}
+					// 48 slash = '/'
 					else {
-						// 48 slash = '/'
 						currTokenIndex++;
 						TokenList.push_back(tonkenate(currLine, "slash"));
 					}
 				}
-				else if (lines[i][j] == '"') {
+				else if (lines[i][_char] == '"') {
 					string s;
-					++j;
-					while (lines[i][j] != '"') {
-						s.append(string(1, lines[i][j]));
-						++j;
+					++_char;
+					while (lines[i][_char] != '"') {
+						s.append(string(1, lines[i][_char]));
+						++_char;
 					}
 					currTokenIndex++;
-					// create token for ident
+					// create token for string
 					TokenList.push_back(tonkenate(currLine, "string", s));
 				}
 				// If the first character is a letter extract
 				// the whole word (from current character until
 				// you reach a non-word character)
-				else if (isLetter(lines[i][j], true)) {
-					string s = string(1, lines[i][j]);
-					j++;
-					while (isLetter(lines[i][j], false)) {
-						s.append(string(1, lines[i][j]));
-						j++;
+				else if (isLetter(lines[i][_char], true)) {
+					string s = string(1, lines[i][_char]);
+					_char++;
+					while (isLetter(lines[i][_char], false)) {
+						s.append(string(1, lines[i][_char]));
+						_char++;
 					}
+					_char--;
 					if (whichKwd(s) == NOTKWD) {         // If not a kwd then it's ident
 						currTokenIndex++;
 						// create token for ident
@@ -124,13 +130,16 @@ vector<Token> tokenize(vector<string> lines) {
 						TokenList.push_back(tonkenate(currLine, whichKwd(s)));
 					}
 				}
-				else if (isNumber(lines[i][j], true)) {
-					string intStr = string(1, lines[i][j]);
-					j++;
-					while (isNumber(lines[i][j], false)) {
-						intStr.append(string(1, lines[i][j]));
-						j++;
+				else if (isNumber(lines[i][_char], true)) {
+					string intStr = string(1, lines[i][_char]);
+					_char++;
+
+					// ERROR Check: can't have -.1 need -0,1
+					while (isNumber(lines[i][_char], false)) {
+						intStr.append(string(1, lines[i][_char]));
+						_char++;
 					}
+					_char--;
 					if (whichNumType(intStr) == "int") {         // If not a float it's int
 						currTokenIndex++;
 						// create token for int
@@ -143,7 +152,7 @@ vector<Token> tokenize(vector<string> lines) {
 					}
 				}
 				else {
-					switch (lines[i][j]) {
+					switch (lines[i][_char]) {
 						// Paired delimeters
 						// 6 comma = ','
 					case ',':
@@ -157,13 +166,13 @@ vector<Token> tokenize(vector<string> lines) {
 						break;
 						// 31 angle1 = '<'
 					case '<':
-						if (lines[i][j + 1] == '=') {
+						if (lines[i][_char + 1] == '=') {
 							// 54 ople = "<="
 							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "ople"));
 						}
 						// 56 opshl = "<<"
-						else if (lines[i][j + 1] == '<') {
+						else if (lines[i][_char + 1] == '<') {
 							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "opshl"));
 						}
@@ -174,12 +183,12 @@ vector<Token> tokenize(vector<string> lines) {
 						break;
 						// 32 angle2 = '>'
 					case '>':
-						if (lines[i][j + 1] == '=') {
+						if (lines[i][_char + 1] == '=') {
 							// 55 opge = ">="
 							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "opge"));
 						}
-						else if (lines[i][j + 1] == '>') {
+						else if (lines[i][_char + 1] == '>') {
 							// 57 opshr = ">>"
 							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "opshr"));
@@ -242,7 +251,7 @@ vector<Token> tokenize(vector<string> lines) {
 						break;
 						// 45 equal = '='
 					case '=':
-						if (lines[i][j + 1] == '=') {
+						if (lines[i][_char + 1] == '=') {
 							// 52 opeq = "=="
 							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "opeq"));
@@ -252,9 +261,10 @@ vector<Token> tokenize(vector<string> lines) {
 							TokenList.push_back(tonkenate(currLine, "equal"));
 						}
 						break;
-						// 46 minus = '-'
+					// 46 minus = '-'
+					//May need to include with number check
 					case '-':
-						if (lines[i][j + 1] == '>') {
+						if (lines[i][_char + 1] == '>') {
 							// 51 oparrow = "->"
 							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "oparrow"));
@@ -271,7 +281,7 @@ vector<Token> tokenize(vector<string> lines) {
 						break;
 						// 53 opne = "!="
 					case '!':
-						if (lines[i][j + 1] == '=') {
+						if (lines[i][_char + 1] == '=') {
 							currTokenIndex++;
 							TokenList.push_back(tonkenate(currLine, "opne"));
 						}
@@ -290,9 +300,9 @@ vector<Token> tokenize(vector<string> lines) {
 bool isLetter(char c, bool firstChar) {
 	string s = string(1, c);
 	if (firstChar)
-		return regex_match(s, regex("[a-zA-z_]"));
+		return regex_match(s, regex("[a-zA-Z_]"));
 	else
-		return regex_match(s, regex("[a-zA-z_0-9]"));
+		return regex_match(s, regex("[a-zA-Z_0-9]"));
 }
 
 bool isNumber(char c, bool firstChar) {
@@ -324,7 +334,7 @@ string whichKwd(string s) {
 string whichNumType(string s) {
 	// TODO: Check whether string is a float
 	//       or an int
-	if (regex_match(s, regex("-?[0-9]+\\.[0-9]+"))) {
+	if (regex_match(s, regex("-?[0-9]*\\.[0-9]+"))) {
 		return "float";
 	}
 	else if (regex_match(s, regex("-?[0-9]+"))) {
