@@ -85,9 +85,9 @@ void printer(string Global_Language, vector<Token> &tokens) { // Prints out all 
 	cout << ")" << endl;	//	Finish the print function
 	tokens.clear();
 }
-
-map<string, regex> gmr = {
-	{ "comment", regex("//.*") }, // Treat as whitespace up to newline char; like C/C++/Java.
+// 
+// map<string, regex> gmr = {
+// 	{ "comment", regex("//.*") }, // Treat as whitespace up to newline char; like C/C++/Java.
 								  //   2 ident = LU LUD *  // identifier.
 								  //     LU = '_' | [a..zA..Z]  // Letter-Underscore.
 								  //     LUD = LU | DIGIT  // Letter-Underscore-Digit.
@@ -98,13 +98,13 @@ map<string, regex> gmr = {
 								  //   4 float = int '.' DIGIT + // float, with decimal point and 1+ fractional digits.
 								  //   5 string = '"' .* '"' // Cannot contain a double-quote char; no escape chars.
 								  // Unpaired delimiters
-	{ "comma", regex(",") },  // 6 comma = ','
-	{ "6", regex(",") },
-	{ "semi", regex(";") },  //  7 semi = ';'
-	{ "7", regex(";") },
-	// Keywords
-	{ "kwd", regex(";") },  //  7 semi = ';'
-	{ "7", regex(";") },
+	// { "comma", regex(",") },  // 6 comma = ','
+	// { "6", regex(",") },
+	// { "semi", regex(";") },  //  7 semi = ';'
+	// { "7", regex(";") },
+	// // Keywords
+	// { "kwd", regex(";") },  //  7 semi = ';'
+	// { "7", regex(";") },
 	// 10 kwdprog = "prog"
 	// 11 kwdmain = "main"
 	// 12 kwdfcn = "fcn"
@@ -150,4 +150,4 @@ map<string, regex> gmr = {
 	// 99 error // Unknown token.
 	//  0 eof // End-of-Input.\
 		    
-};
+// };
