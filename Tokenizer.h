@@ -6,8 +6,8 @@
 
 #pragma once
 
-#ifndef resources_h
-#define resources_h
+#ifndef Tokenizer_h
+#define Tokenizer_h
 
 #endif /* Header_h */
 
