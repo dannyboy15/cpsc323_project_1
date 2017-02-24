@@ -36,10 +36,10 @@ int main() {
 		
 		cout << "Please input a test number or a negative number to exit: ";
 		cin >> x;
-		//if negative x then exit loop
+		//	If negative x then exit loop
 		if (x < 0)
 			break;
-		//concatinates string to match reuired name
+		//	Concatenates string to match reuired name
 		Test_File = "test_" + to_string(x) + ".txt";
 
 		//checks if a file is available

@@ -26,9 +26,9 @@ string keyWord[KEY_WORD_SIZE] = {"prog", "main", "fcn", "class",
 								"print"};
 
 //	========  Function Prototypes  ========
-struct Token;	//	prototype
-void printer();	//	prototype
-string txt_to_strings();	//	prototype
+struct Token;						//	Struct for the Token type
+void printer();						//	Prints all accumulated and formatted tokens
+string txt_to_strings();			//	Converts a text file to a vector of strings
 void print_tokens(vector<Token> &t);
 void tokenize(string s);            // a function to derive tokens from a string
 Token tokenate();                   // takes current variables to create a token
