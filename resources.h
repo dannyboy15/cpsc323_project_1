@@ -12,10 +12,6 @@
 #endif /* Header_h */
 
 #include <fstream>
-#include <iostream>
-#include <map>
-#include <regex>
-#include <stdio.h>
 #include <string>
 #include <vector>
 
@@ -24,7 +20,10 @@ using namespace std;
 
 //	========  Global Variables  ========
 const int KEY_WORD_SIZE = 13;
-string keyWord[KEY_WORD_SIZE] = { "prog","main","fcn","class","float","int","string","if","elseif","else","while","input","print" };
+string keyWord[KEY_WORD_SIZE] = {"prog", "main", "fcn", "class",
+								"float", "int", "string", "if",
+								"elseif", "else", "while", "input",
+								"print"};
 
 //	========  Function Prototypes  ========
 struct Token;	//	prototype

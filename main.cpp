@@ -5,9 +5,8 @@
 //	Description:		Contains tests and their parameters.
 
 #include <iostream>
+#include <regex>
 #include "resources.h"
-#include <string>
-#include <vector>
 
 using namespace std;
 
@@ -18,8 +17,6 @@ vector<Token> _Tokens;
 vector<string> _Strings;
 
 //	========  Function Prototypes  ========
-void testToken(string cntrl, string test);
-void readLineForTokens(string s);
 vector<Token> tokenize(vector<string> lines);
 bool isLetter(char c, bool firstChar);
 bool isNumber(char c, bool firstChar);
@@ -29,15 +26,13 @@ Token tokenate(int ln, string id, int ix, string str);
 Token tokenate(int ln, string id, string str);
 Token tokenate(int ln, string id);
 static const string NOTKWD("NOTKWD");
-static const string NOTFLOAT("NOTFLOAT");
 
 int main() {
 
 	//declare int and make user input the test number
 	//NOTE: files must be named after the following prototype: 'test_X.txt' where X is a number
 	int x = 0;
-	while (true)
-	{
+	while (true) {
 		
 		cout << "Please input a test number or a negative number to exit: ";
 		cin >> x;
@@ -71,13 +66,6 @@ int main() {
 	}
 
 	return 0;
-}
-
-void testToken(string cntrl, string test) {
-	if (cntrl.compare(test) == 0)
-		cout << "Success! Token are equal";
-	else
-		cout << "You failed";
 }
 
 vector<Token> tokenize(vector<string> lines) {
