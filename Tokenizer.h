@@ -8,7 +8,6 @@
 
 #ifndef Tokenizer_h
 #define Tokenizer_h
-
 #endif /* Header_h */
 
 #include <string>
@@ -18,26 +17,19 @@
 using namespace std;
 
 //	========  Function Prototypes  ========
-struct Token;	//	prototype
-void printer();	//	prototype
-string txt_to_strings();	//	prototype
-void print_tokens(vector<Token> &t);
-void tokenize(string s);            // a function to derive tokens from a string
-Token tokenate();                   // takes current variables to create a token
-Token peek_token();
-Token next_token();
+struct Token;
 vector<Token> tokenize(vector<string> lines);
-bool isLetter(char c, bool firstChar);
 bool isNumber(char c, bool firstChar);
 string whichKwd(string s);
 string whichNumType(string s);
-Token tokenate(int ln, string id, int ix, string str);
+Token tokenate(int ln, string id, int ix, string str); // takes current variables to create a token
+bool isLetter(char c, bool firstChar);
 Token tokenate(int ln, string id, string str);
 Token tokenate(int ln, string id);
 ostream& operator<<(ostream& os, const Token& obj);
-static const string NOTKWD("NOTKWD");
 
 //	========  Global Variables  ========
+static const string NOTKWD("NOTKWD");
 const int KEY_WORD_SIZE = 13;
 string keyWord[KEY_WORD_SIZE] = {"prog", "main", "fcn", "class",
 								"float", "int", "string", "if",
