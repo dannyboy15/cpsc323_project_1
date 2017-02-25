@@ -43,6 +43,32 @@ struct Token {
 	string id;		// id based on grammar
 	int ix;			// optional; index number
 	string str;		// optional; actual string
+
+	friend ostream& operator<<(ostream& os, const Token& tkn) {
+      string stringTkn = "";
+      stringTkn.append("(:token ");
+      stringTkn.append(to_string(tkn.ln));
+      stringTkn.append(" ");
+      stringTkn.append(tkn.id);	//	Print line number
+
+		if (tkn.id == "ident") {	//	If the token has an index, print it
+			stringTkn.append(" :ix ");
+			stringTkn.append(to_string(tkn.ix));
+		}
+
+		if (tkn.id == "ident" |
+			tkn.id == "string" |
+			tkn.id == "int" |
+			tkn.id == "float") {
+			stringTkn.append(" :str \"");
+			stringTkn.append(tkn.str);
+			stringTkn.append("\"");	//	If the token has a str, print it
+		}
+
+		stringTkn.append(")");
+		cout << stringTkn;
+      return os;
+  }
 };
 
 vector<Token> tokenize(vector<string> lines) {
@@ -348,31 +374,4 @@ Token tokenate(int ln, string id) {
 	tkn.id = id;
 
 	return tkn;
-}
-
-ostream& operator<<(ostream& os, const Token& tkn)
-{
-      string stringTkn = "";
-      stringTkn.append("(:token ");
-      stringTkn.append(to_string(tkn.ln));
-      stringTkn.append(" ");
-      stringTkn.append(tkn.id);	//	Print line number
-
-		if (tkn.id == "ident") {	//	If the token has an index, print it
-			stringTkn.append(" :ix ");
-			stringTkn.append(to_string(tkn.ix));
-		}
-
-		if (tkn.id == "ident" |
-			tkn.id == "string" |
-			tkn.id == "int" |
-			tkn.id == "float") {
-			stringTkn.append(" :str \"");
-			stringTkn.append(tkn.str);
-			stringTkn.append("\"");	//	If the token has a str, print it
-		}
-
-		stringTkn.append(")");
-		cout << stringTkn;
-      return os;
 }
