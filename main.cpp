@@ -12,16 +12,16 @@
 using namespace std;
 
 vector<string> txt_to_strings(string txt_file);
-void printer(string Global_Language, vector<Token> &tokens);
+void printer(string language, vector<Token> &tokens);
 
 
 //	========  Global Variables  ========
 string _Language = "A3";
 string Test_File = "test_X.txt";
+string expectedOutput = "expected_output_X.txt";
 vector<string> _Strings;
 
 int main() {
-
 	//declare int and make user input the test number
 	//NOTE: files must be named after the following prototype: 'test_X.txt' where X is a number
 	int x = 0;
@@ -66,7 +66,6 @@ int main() {
 			cin.ignore(INT_MAX, '\n');
 		}
 	}
-
 	return 0;
 }
 
@@ -82,36 +81,9 @@ vector<string> txt_to_strings(string txt_file) {	//	Convert an input txt file to
 	return strings;
 }
 
-void printer(string Global_Language, vector<Token> &tokens) { // Prints out all tokens
+void printer(string language, vector<Token> &tokens) { // Prints out all tokens
 
-	cout << "(:lang " << Global_Language << endl;	//	Print the language
-
-	// for (size_t i = 0; i < tokens.size(); i++) {	// For each token in our tokens vector
-
-	// 	for (int i = 0; i < 3; i++) { // Indent the new line
-	// 		cout << " ";
-	// 	}
-
-	// 	cout << "(:token " << tokens[i].ln << " " << tokens[i].id;	//	Print line number
-
-	// 	if (tokens[i].id == "ident") {	//	If the token has an index, print it
-	// 		cout << " :ix " << tokens[i].ix;
-	// 	}
-
-	// 	if (tokens[i].id == "ident" |
-	// 		tokens[i].id == "string" |
-	// 		tokens[i].id == "int" |
-	// 		tokens[i].id == "float") {
-	// 		cout << " :str \"" << tokens[i].str << "\"";	//	If the token has a str, print it
-	// 	}
-
-	// 	cout << ")" << endl;	//	Finish printing that token
-
-
-	// 	//trail section
-	// 	cout << "now from token cout" << endl;
-	// 	cout << tokens[i] << endl;
-	// }
+	cout << "(:lang " << language << endl;	//	Print the language
 
 	for (int i = 0; i < tokens.size(); ++i)
 	{
