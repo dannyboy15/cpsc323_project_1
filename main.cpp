@@ -26,36 +26,45 @@ int main() {
 	//NOTE: files must be named after the following prototype: 'test_X.txt' where X is a number
 	int x = 0;
 	while (true) {
-		
 		cout << "Please input a test number or a negative number to exit: ";
 		cin >> x;
-		//if negative x then exit loop
+		//	If negative x then exit loop
 		if (x < 0)
 			break;
-		//concatinates string to match reuired name
+		//	Concatenates string to match required name
 		Test_File = "test_" + to_string(x) + ".txt";
 
-		//checks if a file is available
-		ifstream f(Test_File.c_str());//if true run lexer
-		if (f.good())
+		//  Checks for correct input
+		if (!cin.fail())
 		{
-			// ========  Start Test  ========
-			cout << "========  Start Test - " << Test_File << " ========" << endl;
+			//  Checks if a file is available
+			ifstream f(Test_File.c_str());                       //If true run lexer
+			if (f.good())
+			{
+				// ========  Start Test  ========
+				cout << "========  Start Test - " << Test_File << " ========" << endl;
 
 
-			_Strings = txt_to_strings(Test_File);
+				_Strings = txt_to_strings(Test_File);
 
-			_Tokens = tokenize(_Strings);
+				_Tokens = tokenize(_Strings);
 
-			printer(_Language, _Tokens);
+				printer(_Language, _Tokens);
 
-			_Strings.clear();
+				_Strings.clear();
 
 
-			cout << "========  End Test  ========" << endl;
-			// ========  End Test  ========
-		}//else output error
-		else cout << "No such file found in current directory!" << endl;
+				cout << "========  End Test  ========" << endl;
+				// ========  End Test  ========
+			}                                                    //  Else output error
+			else cout << "No such file found in current directory!" << endl;
+		}
+		else //  If output is not correct, display message and clear input stream
+		{ 
+			cout << "Wrong input detected." << endl; 
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
+		}
 	}
 
 	return 0;
