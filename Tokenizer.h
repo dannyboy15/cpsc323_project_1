@@ -66,7 +66,7 @@ struct Token {
 		}
 
 		stringTkn.append(")");
-		cout << stringTkn;
+		os << stringTkn;
       return os;
   }
 };
