@@ -3,6 +3,6 @@ prog { // Hypotenuse.
 	a = input;
 	b = input;
 	print( "Hypotenuse = ",
-		( a * a + b ) ^ 0.5
+		( a * a + b * b ) ^ 0.5
 		);
 }

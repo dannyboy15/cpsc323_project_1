@@ -7,7 +7,7 @@
   (:token 2 semi)
   (:token 3 kwdprint)
   (:token 3 parens1)
-  (:token 3 string :str "Radius?> ")
+  (:token 3 string :str "Input radius> ")
   (:token 3 parens2)
   (:token 3 semi)
   (:token 4 ident :ix 1 :str "rx")

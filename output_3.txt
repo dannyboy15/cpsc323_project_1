@@ -28,7 +28,7 @@
   (:token 6 ident :ix 8 :str "b")
   (:token 6 parens2)
   (:token 6 caret)
-  (:token 6 flpoat :str "0.5")
+  (:token 6 float :str "0.5")
   (:token 7 parens2)
   (:token 7 semi)
   (:token 8 brace2)
