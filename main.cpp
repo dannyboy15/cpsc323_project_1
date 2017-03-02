@@ -8,7 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include "Tokenizer.h"
+#include "Lexer.cpp"
 
 using namespace std;
 

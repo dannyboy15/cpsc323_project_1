@@ -6,10 +6,6 @@
 
 #pragma once
 
-#ifndef Tokenizer_h
-#define Tokenizer_h
-#endif
-
 #include <string>
 #include <vector>
 #include <regex>
