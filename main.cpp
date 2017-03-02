@@ -129,7 +129,8 @@ string testOutput(int x, vector<Token> &tkns) {
 
 		if (expStrings[i + 1].compare(s) != 0) {
 			errCount++;
-			rtrnString = rtrnString + "\nLine " + to_string(i) + " does not match";
+			rtrnString = rtrnString + "\nLine " + to_string(i) + " does not match" +
+								"\n" + expStrings[i + 1] + " " + s;
 		}
 	}
 
