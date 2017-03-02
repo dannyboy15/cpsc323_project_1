@@ -9,12 +9,9 @@
 #include <string>
 #include <vector>
 #include <regex>
-
-using namespace std;
-
 #include "Lexer.h"
 
-
+using namespace std;
 
 //	========  Global Variables  ========
 static const string NOTKWD("NOTKWD");
