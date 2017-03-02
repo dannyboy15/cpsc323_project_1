@@ -20,7 +20,7 @@ string testOutput(int x, vector<Token> &tkns);
 //	========  Global Variables  ========
 string _Language = "A3";
 string Test_File = "test_X.txt";
-string expectedOutput = "output_X.txt";
+string expectedOutput = "expected_X.txt";
 vector<string> _Strings;
 
 int main() {
@@ -105,7 +105,7 @@ void printer(string language, vector<Token> &tokens) { // Prints out all tokens
 }
 
 string testOutput(int x, vector<Token> &tkns) {
-	string outFile = "output_" + to_string(x) + ".txt";
+	string outFile = "expected_" + to_string(x) + ".txt";
 	vector<string> expStrings = txt_to_strings(outFile);
 
 	int errCount = 0;
