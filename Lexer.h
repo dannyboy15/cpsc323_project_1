@@ -2,20 +2,14 @@
 #define Lexer_h
 #endif
 
-// #include <string>
-// #include <vector>
-// #include <regex>
-
-// using namespace std;
-
 //	========  Function Prototypes  ========
 struct Token;
-vector<Token> tokenize(vector<string> lines);
+std::vector<Token> tokenize(std::vector<std::string> lines);
 bool isNumber(char c, bool firstChar);
-string whichKwd(string s);
-string whichNumType(string s);
-Token tokenate(int ln, string id, int ix, string str); // takes current variables to create a token
+std::string whichKwd(std::string s);
+std::string whichNumType(std::string s);
+Token tokenate(int ln, std::string id, int ix, std::string str);
 bool isLetter(char c, bool firstChar);
-Token tokenate(int ln, string id, string str);
-Token tokenate(int ln, string id);
-ostream& operator<<(ostream& os, const Token& obj);
+Token tokenate(int ln, std::string id, std::string str);
+Token tokenate(int ln, std::string id);
+std::ostream& operator<<(std::ostream& os, const Token& obj);
