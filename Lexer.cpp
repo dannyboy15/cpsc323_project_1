@@ -11,6 +11,8 @@
 #include <regex>
 #include "Lexer.h"
 
+#define NOTANUMBER "10"
+
 using namespace std;
 
 //	========  Global Variables  ========
@@ -137,6 +139,11 @@ vector<Token> tokenize(vector<string> lines) {
 						currTokenIndex++;
 						// create token for float
 						TokenList.push_back(tokenate(currLine, "float", intStr));
+					}
+					else {
+						cout << "ERROR: On line " << currLine << ", starting at character " << _char - intStr.length() + 1 << "\n";
+						cout << "  > " << intStr << " is not an int or a float\n";
+						exit(EXIT_FAILURE);
 					}
 				}
 				else {
@@ -313,9 +320,6 @@ string whichKwd(string s) {
 			return key;
 		}
 	}
-	/*if (s == "prog") {
-	return "kwdprog";
-	}*/
 	return NOTKWD;
 }
 
@@ -328,7 +332,7 @@ string whichNumType(string s) {
 	else if (regex_match(s, regex("-?[0-9]+"))) {
 		return "int";
 	}
-	return "wrong";
+	return NOTANUMBER;
 }
 
 Token tokenate(int ln, string id, int ix, string str) {
