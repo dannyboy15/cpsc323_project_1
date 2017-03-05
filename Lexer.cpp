@@ -56,6 +56,10 @@ struct Token {
 		os << stringTkn;
       return os;
   }
+
+	bool operator==(const Token& lhs) {
+		return this.id == lhs.id;
+	}
 };
 
 vector<Token> tokenize(vector<string> lines) {

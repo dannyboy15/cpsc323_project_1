@@ -13,3 +13,4 @@ bool isLetter(char c, bool firstChar);
 Token tokenate(int ln, std::string id, std::string str);
 Token tokenate(int ln, std::string id);
 std::ostream& operator<<(std::ostream& os, const Token& obj);
+bool operator==(const Token& lhs);
